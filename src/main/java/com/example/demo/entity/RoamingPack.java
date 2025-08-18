@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "roaming_packs")
+
 public class RoamingPack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
