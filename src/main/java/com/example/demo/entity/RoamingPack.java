@@ -42,4 +42,3 @@ public class RoamingPack {
 
     // Getters & Setters
 }
-

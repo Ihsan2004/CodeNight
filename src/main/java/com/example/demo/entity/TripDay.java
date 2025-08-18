@@ -33,4 +33,3 @@ public class TripDay {
     @Column(name = "multi_country", nullable = false)
     private boolean multiCountry;
 }
-

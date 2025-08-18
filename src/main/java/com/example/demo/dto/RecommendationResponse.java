@@ -4,7 +4,7 @@ import java.util.List;
 
 public record RecommendationResponse(
         List<Item> top3,
-        String rationale
-) {
-    public record Item(String label, double totalCost, String explanation, Object details){}
+        String rationale) {
+    public record Item(String label, double totalCost, String explanation, Object details) {
+    }
 }

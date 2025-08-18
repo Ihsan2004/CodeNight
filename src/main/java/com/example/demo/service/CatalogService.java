@@ -23,10 +23,14 @@ public class CatalogService {
     private boolean cached = true;
     private CatalogResponse cache;
 
-    public CatalogService withCache(boolean enabled) { this.cached = enabled; return this; }
+    public CatalogService withCache(boolean enabled) {
+        this.cached = enabled;
+        return this;
+    }
 
     public CatalogResponse getCatalog() {
-        if (cached && cache != null) return cache;
+        if (cached && cache != null)
+            return cache;
         List<Country> countries = countryRepo.findAll();
         List<RoamingRate> rates = rateRepo.findAll();
         List<RoamingPack> packs = packRepo.findAll();
@@ -34,4 +38,3 @@ public class CatalogService {
         return cache;
     }
 }
-
