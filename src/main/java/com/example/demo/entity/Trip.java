@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -17,8 +18,16 @@ public class Trip {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column(name = "country_code", nullable = false)
-    private String countryCode;
+    // Eğer sadece tek ülke seçilmişse
+    @Column(name = "country_code1", nullable = false)
+    private String countryCode1;
+
+    // İkinci ülke (opsiyonel)
+    @Column(name = "country_code2")
+    private String countryCode2;
+
+    @Column(name = "multi_country", nullable = false)
+    private boolean multiCountry;
 
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
@@ -26,6 +35,8 @@ public class Trip {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    // Getters & Setters
+    // Trip ↔ TripDay ilişki (bir Trip’in birden fazla günü olabilir)
+    @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TripDay> tripDays;
 }
 
