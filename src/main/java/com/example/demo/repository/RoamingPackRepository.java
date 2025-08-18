@@ -1,4 +1,9 @@
 package com.example.demo.repository;
 
-public interface RoamingPackRepository {
+import com.example.demo.entity.RoamingPack;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RoamingPackRepository extends JpaRepository<RoamingPack, Long> {
 }
