@@ -88,7 +88,7 @@ const Recommendations: React.FC = () => {
       {/* Top Recommendations */}
       <Grid container spacing={3}>
         {recommendations.top3.map((recommendation, index) => (
-          <Grid xs={12} md={4} key={index}>
+          <Grid size={{ xs: 12, md:8 }} key = {index}>
             <Card 
               sx={{ 
                 height: '100%',

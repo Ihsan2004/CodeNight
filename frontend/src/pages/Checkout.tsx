@@ -1,3 +1,4 @@
+// src/pages/Checkout.tsx
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
@@ -13,7 +14,6 @@ import {
   Step,
   StepLabel,
   Paper,
-  Divider,
   List,
   ListItem,
   ListItemText,
@@ -21,8 +21,6 @@ import {
 } from '@mui/material';
 import { api, endpoints } from '../api/client';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import PaymentIcon from '@mui/icons-material/Payment';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const steps = ['Review Selection', 'Payment Details', 'Confirmation'];
@@ -57,13 +55,8 @@ const Checkout: React.FC = () => {
   const finalOption = selectedOption || selectedRecommendation;
   const isFromRecommendation = !!selectedRecommendation;
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  const handleNext = () => setActiveStep((prev) => prev + 1);
+  const handleBack = () => setActiveStep((prev) => prev - 1);
 
   const handlePaymentSubmit = async () => {
     try {
@@ -101,14 +94,14 @@ const Checkout: React.FC = () => {
             <Typography variant="h5" gutterBottom>
               Review Your Selection
             </Typography>
-            
+
             <Card variant="outlined" sx={{ mb: 3 }}>
               <CardContent>
                 <Typography variant="h6" gutterBottom>
                   Selected Option
                 </Typography>
                 <Grid container spacing={2}>
-                  <Grid xs={12} md={6}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography variant="body2" color="text.secondary">
                       Type: {finalOption.kind === 'pack' ? 'Roaming Pack' : 'Pay-as-you-go'}
                     </Typography>
@@ -121,7 +114,7 @@ const Checkout: React.FC = () => {
                       Number of Packs: {finalOption.nPacks || 1}
                     </Typography>
                   </Grid>
-                  <Grid xs={12} md={6}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <Typography variant="h4" color="primary">
                       {finalOption.totalCost.toFixed(2)} {finalOption.currency}
                     </Typography>
@@ -140,19 +133,19 @@ const Checkout: React.FC = () => {
                     Trip Summary
                   </Typography>
                   <Grid container spacing={2}>
-                    <Grid xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                       <Typography variant="body2" color="text.secondary">
-                        Duration: {simulationData?.summary.days || 0} days
+                        Duration: {simulationData?.summary?.days || 0} days
                       </Typography>
                     </Grid>
-                    <Grid xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                       <Typography variant="body2" color="text.secondary">
-                        Data Need: {simulationData?.summary.totalNeed.gb.toFixed(2) || 0} GB
+                        Data Need: {simulationData?.summary?.totalNeed?.gb?.toFixed?.(2) || 0} GB
                       </Typography>
                     </Grid>
-                    <Grid xs={12} md={4}>
+                    <Grid size={{ xs: 12, md: 4 }}>
                       <Typography variant="body2" color="text.secondary">
-                        Voice Need: {simulationData?.summary.totalNeed.min || 0} min
+                        Voice Need: {simulationData?.summary?.totalNeed?.min || 0} min
                       </Typography>
                     </Grid>
                   </Grid>
@@ -174,9 +167,9 @@ const Checkout: React.FC = () => {
             <Typography variant="h5" gutterBottom>
               Payment Details
             </Typography>
-            
+
             <Grid container spacing={3}>
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   label="Card Number"
@@ -185,7 +178,7 @@ const Checkout: React.FC = () => {
                   placeholder="1234 5678 9012 3456"
                 />
               </Grid>
-              <Grid xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
                   fullWidth
                   label="Expiry Date"
@@ -194,7 +187,7 @@ const Checkout: React.FC = () => {
                   placeholder="MM/YY"
                 />
               </Grid>
-              <Grid xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
                   fullWidth
                   label="CVV"
@@ -203,7 +196,7 @@ const Checkout: React.FC = () => {
                   placeholder="123"
                 />
               </Grid>
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   label="Cardholder Name"
@@ -235,7 +228,7 @@ const Checkout: React.FC = () => {
             <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
               Your roaming plan has been successfully activated. You will receive a confirmation email shortly.
             </Typography>
-            
+
             <Paper variant="outlined" sx={{ p: 3, mb: 3, textAlign: 'left' }}>
               <Typography variant="h6" gutterBottom>
                 What's Next?
@@ -245,7 +238,7 @@ const Checkout: React.FC = () => {
                   <ListItemIcon>
                     <CheckCircleIcon color="success" />
                   </ListItemIcon>
-                  <ListItemText 
+                  <ListItemText
                     primary="Immediate Activation"
                     secondary="Your roaming plan is now active and ready to use"
                   />
@@ -254,7 +247,7 @@ const Checkout: React.FC = () => {
                   <ListItemIcon>
                     <CheckCircleIcon color="success" />
                   </ListItemIcon>
-                  <ListItemText 
+                  <ListItemText
                     primary="Email Confirmation"
                     secondary="Check your email for detailed plan information"
                   />
@@ -263,7 +256,7 @@ const Checkout: React.FC = () => {
                   <ListItemIcon>
                     <CheckCircleIcon color="success" />
                   </ListItemIcon>
-                  <ListItemText 
+                  <ListItemText
                     primary="24/7 Support"
                     secondary="Contact our support team if you need assistance"
                   />
@@ -288,9 +281,7 @@ const Checkout: React.FC = () => {
         >
           Back
         </Button>
-        <Typography variant="h4">
-          Checkout
-        </Typography>
+        <Typography variant="h4">Checkout</Typography>
       </Box>
 
       <Card>
@@ -306,26 +297,27 @@ const Checkout: React.FC = () => {
           {renderStepContent(activeStep)}
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-            >
+            <Button disabled={activeStep === 0} onClick={handleBack}>
               Back
             </Button>
-            
+
             <Box>
               {activeStep === steps.length - 1 ? (
-                <Button
-                  variant="contained"
-                  onClick={() => navigate('/')}
-                >
+                <Button variant="contained" onClick={() => navigate('/')}>
                   Plan New Trip
                 </Button>
               ) : (
                 <Button
                   variant="contained"
                   onClick={activeStep === 1 ? handlePaymentSubmit : handleNext}
-                  disabled={loading || (activeStep === 1 && (!paymentDetails.cardNumber || !paymentDetails.expiryDate || !paymentDetails.cvv || !paymentDetails.cardholderName))}
+                  disabled={
+                    loading ||
+                    (activeStep === 1 &&
+                      (!paymentDetails.cardNumber ||
+                        !paymentDetails.expiryDate ||
+                        !paymentDetails.cvv ||
+                        !paymentDetails.cardholderName))
+                  }
                 >
                   {activeStep === 1 ? (loading ? 'Processing...' : 'Confirm Payment') : 'Next'}
                 </Button>

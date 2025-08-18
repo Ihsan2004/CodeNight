@@ -131,7 +131,7 @@ const Simulation: React.FC = () => {
             Trip Summary
           </Typography>
                       <Grid container spacing={2}>
-              <Grid xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Typography variant="h6" color="primary">
                   {simulationData?.summary.days || 0} Days
                 </Typography>
@@ -139,7 +139,7 @@ const Simulation: React.FC = () => {
                   Total Trip Duration
                 </Typography>
               </Grid>
-              <Grid xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Typography variant="h6" color="primary">
                   {simulationData?.summary.totalNeed.gb.toFixed(2) || 0} GB
                 </Typography>
@@ -147,7 +147,7 @@ const Simulation: React.FC = () => {
                   Total Data Need
                 </Typography>
               </Grid>
-              <Grid xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Typography variant="h6" color="primary">
                   {simulationData?.summary.totalNeed.min || 0} min
                 </Typography>

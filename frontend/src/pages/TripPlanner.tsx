@@ -124,7 +124,7 @@ const TripPlanner: React.FC = () => {
 
         <Grid container spacing={3}>
           {/* Trip Details */}
-          <Grid xs={12} md={8}>
+          <Grid size={{ xs: 12, md:8 }}>
             <Card>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
@@ -134,7 +134,7 @@ const TripPlanner: React.FC = () => {
                 {trips.map((trip, index) => (
                   <Box key={index} sx={{ mb: 3, p: 2, border: '1px solid #e0e0e0', borderRadius: 1 }}>
                     <Grid container spacing={2} alignItems="center">
-                      <Grid xs={12} sm={4}>
+                      <Grid size={{ xs: 12, sm: 4 }}>
                         <FormControl fullWidth>
                           <InputLabel>Country</InputLabel>
                           <Select
@@ -151,7 +151,7 @@ const TripPlanner: React.FC = () => {
                         </FormControl>
                       </Grid>
                       
-                      <Grid xs={12} sm={3}>
+                      <Grid size={{ xs: 12, sm: 3 }}>
                         <TextField
                           fullWidth
                           label="Start Date"
@@ -162,7 +162,7 @@ const TripPlanner: React.FC = () => {
                         />
                       </Grid>
                       
-                      <Grid xs={12} sm={3}>
+                      <Grid size={{ xs: 12, sm: 3 }}>
                         <TextField
                           fullWidth
                           label="End Date"
@@ -173,7 +173,7 @@ const TripPlanner: React.FC = () => {
                         />
                       </Grid>
                       
-                      <Grid xs={12} sm={2}>
+                      <Grid size={{ xs: 12, sm: 2 }}>
                         <Button
                           variant="outlined"
                           color="error"
@@ -201,7 +201,7 @@ const TripPlanner: React.FC = () => {
           </Grid>
 
           {/* Usage Profile */}
-          <Grid xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Card>
               <CardContent>
                 <Typography variant="h5" gutterBottom>
