@@ -1,7 +1,29 @@
 country_code,country_name,region
 TR,Turkey,Europe
 DE,Germany,Europe
-US,United States,North America
-AE,United Arab Emirates,Middle East
-EG,Egypt,Africa
 GR,Greece,Europe
+FR,France,Europe
+ES,Spain,Europe
+IT,Italy,Europe
+NL,Netherlands,Europe
+GB,United Kingdom,Europe
+NO,Norway,Europe
+SE,Sweden,Europe
+US,United States,North America
+CA,Canada,North America
+MX,Mexico,North America
+BR,Brazil,South America
+AR,Argentina,South America
+AE,United Arab Emirates,Middle East
+SA,Saudi Arabia,Middle East
+EG,Egypt,Africa
+ZA,South Africa,Africa
+NG,Nigeria,Africa
+IN,India,Asia
+CN,China,Asia
+JP,Japan,Asia
+KR,South Korea,Asia
+SG,Singapore,Asia
+TH,Thailand,Asia
+AU,Australia,Oceania
+NZ,New Zealand,Oceania

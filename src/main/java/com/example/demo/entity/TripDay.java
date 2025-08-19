@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Table(name = "trip_days")
 public class TripDay {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 

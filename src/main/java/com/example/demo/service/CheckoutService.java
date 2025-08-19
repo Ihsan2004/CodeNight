@@ -53,6 +53,9 @@ public class CheckoutService {
 
     private void loadSampleData() {
         try {
+            // Clear existing data to avoid conflicts
+            clearExistingData();
+
             loadCountries();
             loadRoamingRates();
             loadRoamingPacks();
@@ -62,6 +65,15 @@ public class CheckoutService {
         } catch (Exception e) {
             log.error("Error loading sample data: {}", e.getMessage(), e);
         }
+    }
+
+    private void clearExistingData() {
+        log.debug("Clearing existing data...");
+        usageProfileRepository.deleteAll();
+        userRepository.deleteAll();
+        roamingPackRepository.deleteAll();
+        roamingRateRepository.deleteAll();
+        countryRepository.deleteAll();
     }
 
     private void loadCountries() {
@@ -130,20 +142,21 @@ public class CheckoutService {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 10) {
-                    RoamingPack pack = new RoamingPack();
-                    pack.setPackId(Long.valueOf(parts[0].trim()));
-                    pack.setName(parts[1].trim());
-                    pack.setCoverage(parts[2].trim());
-                    pack.setCoverageType(parts[3].trim());
-                    pack.setDataGb(Integer.valueOf(parts[4].trim()));
-                    pack.setVoiceMin(Integer.valueOf(parts[5].trim()));
-                    pack.setSms(Integer.valueOf(parts[6].trim()));
-                    pack.setPrice(Double.valueOf(parts[7].trim()));
-                    pack.setValidityDays(Integer.valueOf(parts[8].trim()));
-                    pack.setCurrency(parts[9].trim());
+                    Long packId = Long.valueOf(parts[0].trim());
 
                     // Check if pack already exists
-                    if (!roamingPackRepository.existsById(pack.getPackId())) {
+                    if (!roamingPackRepository.existsById(packId)) {
+                        RoamingPack pack = new RoamingPack(packId);
+                        pack.setName(parts[1].trim());
+                        pack.setCoverage(parts[2].trim());
+                        pack.setCoverageType(parts[3].trim());
+                        pack.setDataGb(Integer.valueOf(parts[4].trim()));
+                        pack.setVoiceMin(Integer.valueOf(parts[5].trim()));
+                        pack.setSms(Integer.valueOf(parts[6].trim()));
+                        pack.setPrice(Double.valueOf(parts[7].trim()));
+                        pack.setValidityDays(Integer.valueOf(parts[8].trim()));
+                        pack.setCurrency(parts[9].trim());
+
                         roamingPackRepository.save(pack);
                         log.debug("Added roaming pack: {}", pack.getName());
                     }
@@ -164,13 +177,14 @@ public class CheckoutService {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 3) {
-                    User user = new User();
-                    user.setUserId(Long.valueOf(parts[0].trim()));
-                    user.setName(parts[1].trim());
-                    user.setHomePlan(parts[2].trim());
+                    Long userId = Long.valueOf(parts[0].trim());
 
                     // Check if user already exists
-                    if (!userRepository.existsById(user.getUserId())) {
+                    if (!userRepository.existsById(userId)) {
+                        User user = new User(userId);
+                        user.setName(parts[1].trim());
+                        user.setHomePlan(parts[2].trim());
+
                         userRepository.save(user);
                         log.debug("Added user: {}", user.getName());
                     }
@@ -191,14 +205,15 @@ public class CheckoutService {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length >= 4) {
-                    UsageProfile profile = new UsageProfile();
-                    profile.setUserId(Long.valueOf(parts[0].trim()));
-                    profile.setAvgDailyMb(Integer.valueOf(parts[1].trim()));
-                    profile.setAvgDailyMin(Integer.valueOf(parts[2].trim()));
-                    profile.setAvgDailySms(Integer.valueOf(parts[3].trim()));
+                    Long userId = Long.valueOf(parts[0].trim());
 
                     // Check if profile already exists
-                    if (!usageProfileRepository.existsById(profile.getUserId())) {
+                    if (!usageProfileRepository.existsById(userId)) {
+                        UsageProfile profile = new UsageProfile(userId);
+                        profile.setAvgDailyMb(Integer.valueOf(parts[1].trim()));
+                        profile.setAvgDailyMin(Integer.valueOf(parts[2].trim()));
+                        profile.setAvgDailySms(Integer.valueOf(parts[3].trim()));
+
                         usageProfileRepository.save(profile);
                         log.debug("Added usage profile for user: {}", profile.getUserId());
                     }

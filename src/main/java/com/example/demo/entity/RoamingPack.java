@@ -8,7 +8,6 @@ import lombok.Data;
 @Table(name = "roaming_packs")
 public class RoamingPack {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pack_id")
     private Long packId;
 

@@ -11,7 +11,6 @@ import java.util.List;
 @Table(name = "trips")
 public class Trip {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "trip_id")
     private Long tripId;
 

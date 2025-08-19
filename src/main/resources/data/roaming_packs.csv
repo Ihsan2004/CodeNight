@@ -1,6 +1,14 @@
 pack_id,name,coverage,coverage_type,data_gb,voice_min,sms,price,validity_days,currency
-201,Avrupa 5GB,Europe,region,5,50,50,19.9,7,EUR
-202,Avrupa 10GB,Europe,region,10,100,100,29.9,14,EUR
-203,Dünya 3GB,Global,region,3,30,30,34.9,10,USD
-204,ABD 5GB,US,country,5,50,50,24.9,10,USD
-205,BAE 3GB,AE,country,3,30,30,22.9,7,USD
+301,Avrupa 5GB,Europe,region,5,50,50,19.9,7,EUR
+302,Avrupa 10GB,Europe,region,10,100,100,29.9,14,EUR
+303,Dünya 3GB,Global,region,3,30,30,34.9,10,USD
+304,Dünya 8GB,Global,region,8,80,80,59.9,20,USD
+305,ABD 5GB,US,country,5,50,50,24.9,10,USD
+306,ABD 10GB,US,country,10,100,100,39.9,20,USD
+307,BAE 3GB,AE,country,3,30,30,22.9,7,USD
+308,Orta Doğu 4GB,Middle East,region,4,40,40,21.9,7,USD
+309,Afrika 4GB,Africa,region,4,40,40,24.9,10,USD
+310,Asya 5GB,Asia,region,5,50,50,25.9,10,USD
+311,Kuzey Amerika 5GB,North America,region,5,50,50,27.9,10,USD
+312,Avustralya 5GB,Oceania,region,5,50,50,26.9,10,USD
+313,Birleşik Krallık 5GB,GB,country,5,50,50,21.9,7,GBP
