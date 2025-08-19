@@ -20,5 +20,20 @@ public class UsageProfile {
     @Column(name = "avg_daily_sms", nullable = false)
     private Integer avgDailySms;
 
-    // Getters & Setters
+    // Default constructor for JPA
+    public UsageProfile() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public UsageProfile(Long userId) {
+        this.userId = userId;
+    }
+
+    // Full constructor for all fields
+    public UsageProfile(Long userId, Integer avgDailyMb, Integer avgDailyMin, Integer avgDailySms) {
+        this.userId = userId;
+        this.avgDailyMb = avgDailyMb;
+        this.avgDailyMin = avgDailyMin;
+        this.avgDailySms = avgDailySms;
+    }
 }

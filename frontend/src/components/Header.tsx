@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { label: 'Recommendations', path: '/recommendations' },
     { label: 'Simulation', path: '/simulation' },
     { label: 'Checkout', path: '/checkout' },
+    { label: 'Backend Test', path: '/test' },
   ];
 
   return (

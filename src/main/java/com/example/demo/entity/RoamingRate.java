@@ -23,5 +23,22 @@ public class RoamingRate {
     @Column(name = "currency", nullable = false)
     private String currency;
 
-    // Getters & Setters
+    // Default constructor for JPA
+    public RoamingRate() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public RoamingRate(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    // Full constructor for all fields
+    public RoamingRate(String countryCode, Double dataPerMb, Double voicePerMin,
+            Double smsPerMsg, String currency) {
+        this.countryCode = countryCode;
+        this.dataPerMb = dataPerMb;
+        this.voicePerMin = voicePerMin;
+        this.smsPerMsg = smsPerMsg;
+        this.currency = currency;
+    }
 }

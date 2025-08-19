@@ -8,6 +8,7 @@ import TripPlanner from './pages/TripPlanner';
 import Recommendations from './pages/Recommendations';
 import Simulation from './pages/Simulation';
 import Checkout from './pages/Checkout';
+import BackendTest from './components/BackendTest';
 
 const theme = createTheme({
   palette: {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/recommendations" element={<Recommendations />} />
               <Route path="/simulation" element={<Simulation />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/test" element={<BackendTest />} />
             </Routes>
           </Container>
         </Box>

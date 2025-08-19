@@ -38,4 +38,25 @@ public class Trip {
     // Trip ↔ TripDay ilişki (bir Trip’in birden fazla günü olabilir)
     @OneToMany(mappedBy = "trip", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TripDay> tripDays;
+
+    // Default constructor for JPA
+    public Trip() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public Trip(Long tripId) {
+        this.tripId = tripId;
+    }
+
+    // Full constructor for all fields
+    public Trip(Long tripId, Long userId, String countryCode1, String countryCode2,
+            boolean multiCountry, LocalDate startDate, LocalDate endDate) {
+        this.tripId = tripId;
+        this.userId = userId;
+        this.countryCode1 = countryCode1;
+        this.countryCode2 = countryCode2;
+        this.multiCountry = multiCountry;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }

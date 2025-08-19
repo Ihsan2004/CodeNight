@@ -18,5 +18,19 @@ public class User {
     @Column(name = "home_plan", nullable = false)
     private String homePlan;
 
-    // Getters & Setters
+    // Default constructor for JPA
+    public User() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public User(Long userId) {
+        this.userId = userId;
+    }
+
+    // Full constructor for all fields
+    public User(Long userId, String name, String homePlan) {
+        this.userId = userId;
+        this.name = name;
+        this.homePlan = homePlan;
+    }
 }

@@ -17,5 +17,19 @@ public class Country {
     @Column(name = "region", nullable = false)
     private String region;
 
-    // Getters & Setters
+    // Default constructor for JPA
+    public Country() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public Country(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    // Full constructor for all fields
+    public Country(String countryCode, String countryName, String region) {
+        this.countryCode = countryCode;
+        this.countryName = countryName;
+        this.region = region;
+    }
 }

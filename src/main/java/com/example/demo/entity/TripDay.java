@@ -32,4 +32,24 @@ public class TripDay {
     // O gün birden fazla ülke mi gezildi?
     @Column(name = "multi_country", nullable = false)
     private boolean multiCountry;
+
+    // Default constructor for JPA
+    public TripDay() {
+    }
+
+    // Constructor with ID for manual ID assignment
+    public TripDay(Long id) {
+        this.id = id;
+    }
+
+    // Full constructor for all fields
+    public TripDay(Long id, Trip trip, LocalDate date, String countryCode1,
+            String countryCode2, boolean multiCountry) {
+        this.id = id;
+        this.trip = trip;
+        this.date = date;
+        this.countryCode1 = countryCode1;
+        this.countryCode2 = countryCode2;
+        this.multiCountry = multiCountry;
+    }
 }
